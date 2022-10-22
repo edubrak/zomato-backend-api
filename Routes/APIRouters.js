@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
+
 const restaurant = require("../Controllers/RestaurantsController");
 const location = require("../Controllers/LocationControllers");
 const meal_type = require("../Controllers/MealTypesController");
 const menu_items = require("../Controllers/MenuItemsController");
 const users = require("../Controllers/UsersController");
-// const payment = require("../Controllers/PaymentControllers");
+const payment = require("../Controllers/PaymentControllers");
 //restaurant
 router.get("/api", restaurant.home);
 router.get("/api/get-restaurant-details", restaurant.getRestaurantList);
@@ -33,7 +34,7 @@ router.get(
 router.post("/api/login", users.login);
 router.post("/api/sign-up", users.signUp);
 
-// router.post("/api/payment/gen-order", payment.getOrderId);
-// router.post("/api/payment/verify", payment.verifyPayment);
+router.post("/api/payment/gen-order", payment.getOrderId);
+router.post("/api/payment/verify", payment.verifyPayment);
 
 module.exports = router;
